@@ -23,10 +23,6 @@ app.get("/", (req, res) => {
   return res.render("home", { users });
 });
 
-app.get("/new", (req, res) => {
-  return res.render("new");
-});
-
 app.get("/major", logMiddleware, (req, res) => {
   const { age } = req.query;
   return res.render("major", { age });
@@ -36,12 +32,6 @@ app.get("/minor", logMiddleware, (req, res) => {
   const { age } = req.query;
   return res.render("minor", { age });
 });
-
-app.post("/create", (req, res) => {
-  users.push(req.body.user);
-  return res.redirect("/");
-});
-
 app.post("/check/:age", (req, res) => {
   const { age } = req.body;
 
